@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/bishre/fullstackopen2019-part3-backend/issues"
   },
-  "homepage": "https://github.com/bishre/fullstackopen2019-part3-backend#readme"
+  "homepage": "https://github.com/bishre/fullstackopen2019-part3-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
