@@ -6,7 +6,7 @@ app.use(cors())
 
 app.get("/", (req, res) => {
     res.send(`
-        <p>Hello world</p>
+        <p>Hello mongo</p>
     `)
 })
 
