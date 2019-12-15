@@ -5,6 +5,10 @@ const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
+const persons = [
+  {name: 'bibhor', number: 34567890987}
+]
+
 const url =
   `mongodb+srv://bibhor:bibhor34@moverz-s7atf.mongodb.net/phonebook-app?retryWrites=true&w=majority`
 
