@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-// const bodyParser = require('body-parser')
-// const morgan = require('morgan')
-// const cors = require('cors')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const cors = require('cors')
 // const mongoose = require('mongoose')
 
 let persons = [
@@ -35,8 +35,8 @@ let persons = [
 
 // const Contact = mongoose.model('Contact', contactSchema)
 
-// app.use(bodyParser.json())
-    // .use(cors())
+app.use(bodyParser.json())
+    .use(cors())
 
 // morgan.token('body', function (req, res) { return JSON.stringify(req.body) });
 // app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
@@ -48,22 +48,22 @@ app.get("/api/persons", (req, res) => {
     res.json(persons)
 })
 
-// app.get("/api/persons/:id", (req, res) => {
-//     const id = Number(req.params.id)
-//     const person = persons.find(p => p.id === id)
-//     if(person) {
-//         res.json(person)
-//     } else {
-//         res.status(404).end()
-//     }
-// })
+app.get("/api/persons/:id", (req, res) => {
+    const id = Number(req.params.id)
+    const person = persons.find(p => p.id === id)
+    if(person) {
+        res.json(person)
+    } else {
+        res.status(404).end()
+    }
+})
 
-// app.delete('/api/persons/:id', (req, res) => {
-//     const id = Number(req.params.id)
-//     persons = persons.filter(person => person.id !== id)
+app.delete('/api/persons/:id', (req, res) => {
+    const id = Number(req.params.id)
+    persons = persons.filter(person => person.id !== id)
 
-//     res.status(204).end()
-// })
+    res.status(204).end()
+})
 
 // app.post('/api/persons', (req, res) => {
 //     const body = req.body
