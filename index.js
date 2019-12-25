@@ -58,12 +58,12 @@ app.get("/api/persons/:id", (req, res) => {
     }
 })
 
-app.delete('/api/persons/:id', (req, res) => {
-    const id = Number(req.params.id)
-    persons = persons.filter(person => person.id !== id)
+// app.delete('/api/persons/:id', (req, res) => {
+//     const id = Number(req.params.id)
+//     persons = persons.filter(person => person.id !== id)
 
-    res.status(204).end()
-})
+//     res.status(204).end()
+// })
 
 // app.post('/api/persons', (req, res) => {
 //     const body = req.body
