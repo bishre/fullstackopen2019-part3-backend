@@ -38,8 +38,8 @@ let persons = [
 app.use(bodyParser.json())
     .use(cors())
 
-// morgan.token('body', function (req, res) { return JSON.stringify(req.body) });
-// app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
+morgan.token('body', function (req, res) { return JSON.stringify(req.body) });
+app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
 
 app.get("/api/persons", (req, res) => {
     // Contact.find({}).then(persons => {
@@ -58,33 +58,33 @@ app.get("/api/persons/:id", (req, res) => {
     }
 })
 
-// app.delete('/api/persons/:id', (req, res) => {
-//     const id = Number(req.params.id)
-//     persons = persons.filter(person => person.id !== id)
+app.delete('/api/persons/:id', (req, res) => {
+    const id = Number(req.params.id)
+    persons = persons.filter(person => person.id !== id)
 
-//     res.status(204).end()
-// })
+    res.status(204).end()
+})
 
-// app.post('/api/persons', (req, res) => {
-//     const body = req.body
-//     if(!body.name || !body.number) {
-//         res.status(400).json({
-//             error: 'missing contact details'
-//         })
-//     } else if(persons.some(person => person.name === body.name)) {
-//         res.status(400).json({
-//             error: 'name must be unique'
-//         })
-//     }
-//     const person = {
-//         name: body.name,
-//         number: body.number,
-//         id: Math.floor(Math.random()*1000000000)
-//     }
-//     persons = persons.concat(person)
+app.post('/api/persons', (req, res) => {
+    const body = req.body
+    if(!body.name || !body.number) {
+        res.status(400).json({
+            error: 'missing contact details'
+        })
+    } else if(persons.some(person => person.name === body.name)) {
+        res.status(400).json({
+            error: 'name must be unique'
+        })
+    }
+    const person = {
+        name: body.name,
+        number: body.number,
+        id: Math.floor(Math.random()*1000000000)
+    }
+    persons = persons.concat(person)
 
-//     res.json(person)
-// })
+    res.json(person)
+})
 
 app.get("/info", (req, res) => {
     res.send(`
