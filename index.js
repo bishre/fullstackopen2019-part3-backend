@@ -41,7 +41,7 @@ app.use(bodyParser.json())
 app.use(express.static('build'))
 
 morgan.token('body', function (req, res) { return JSON.stringify(req.body) });
-app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
 
 app.get("/api/persons", (req, res) => {
     // Contact.find({}).then(persons => {
