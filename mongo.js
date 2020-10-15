@@ -23,9 +23,9 @@ const Contact = mongoose.model('Contact', contactSchema)
 
 if ( process.argv.length === 3 ) {
   Contact.find({}).then(result => {
-    console.log("phonebook:")
+    console.log('phonebook:')
     result.forEach(note => {
-      console.log(note.name + " " + note.number)
+      console.log(note.name + ' ' + note.number)
     })
     mongoose.connection.close()
     process.exit(1)
