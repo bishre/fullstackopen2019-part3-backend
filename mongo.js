@@ -21,12 +21,23 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema)
 
+if ( process.argv.length === 3 ) {
+  Contact.find({}).then(result => {
+    console.log("phonebook:")
+    result.forEach(note => {
+      console.log(note.name + " " + note.number)
+    })
+    mongoose.connection.close()
+    process.exit(1)
+  })
+}
+
 const contact = new Contact({
   name: name,
   number: number
 })
 
 contact.save().then(response => {
-  console.log('contact saved!')
+  console.log(`added ${response.name} number ${response.number} to phonebook`)
   mongoose.connection.close()
 })
